@@ -1,0 +1,76 @@
+
+	.set	mp_sig,0x5f504d5f	#_MP_
+	.set	rsdp_sig,0x5253442050525420	#"RSD PTR "
+	.set	rsdp_sig0,0x2052545020445352
+	.set	rsdp_sig1,0x20525450
+	.set	rsdt_sig,0x54445352	#TDSR
+	.set	facp_sig,0x50434146	#PCAF
+	.set	EBDA,0x40e
+	.set	BIOS_RO,0xe0000		#,0xfffff
+	.set	BIOS_SIZE,0x20000
+#	.set	rsdp_signature,"RSD PTR "
+#
+#	Root system description pointer structure
+#
+	.set	rsdp_signature,0
+	.set	rsdp_checksum,8
+	.set	rsdp_oemid,9
+	.set	rsdp_revision,15
+	.set	rsdp_rsdt_address,16		#32 bit physical address of the RSDT
+	.set	rsdp_length,20
+	.set	rsdp_xsdt_address,24		#64 bit physical address of the XSDT
+	.set	rsdp_extended_checksum,32
+	.set	rsdp_resv,33		#3 byte
+#
+#	system description table header
+#
+	.set	rsdt_signature,0
+	.set	rsdt_length,4
+	.set	rsdt_entry,36
+
+	.set	madt_sig,0x43495041	#CIPA
+	.code32
+	.text
+	.intel_syntax noprefix
+	.global	find_acpi
+find_acpi:
+	mov	eax,rsdp_sig1
+	movzx	edi,word ptr [EBDA]
+	shl	edi,4
+	mov	ecx,1024/4
+	cld
+1:	
+	repnz	scasd
+	jz	3f
+
+	mov	edi,BIOS_RO
+	mov	ecx,BIOS_SIZE/4
+2:
+	repnz	scasd
+	jnz	4f
+
+3:
+	sub	edi,8
+	
+	mov	esi,[edi+rsdp_rsdt_address]
+	lea	edx,[esi+rsdt_entry]
+	mov	eax,madt_sig
+
+#	mov	eax,[ebx]
+#	mov	edi,0xb8000+160*19
+#	call	hex32
+#	jmp	$
+madt:
+	mov	ebx,[edx]
+	cmp	[ebx],eax
+	je	madt_ok
+	add	edx,4
+	jmp	madt
+madt_ok:
+	mov	eax,[ebx]
+	mov	edi,0xb8000+160*8
+	call	hex32
+4:
+
+	ret
+

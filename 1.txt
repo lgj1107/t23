@@ -1,0 +1,1 @@
+chromium --no-sandbox --password-store=detect --user-data-dir=/root/chrome-profile

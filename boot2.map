@@ -1,0 +1,107 @@
+
+内存配置
+
+名称           来源             长度             属性
+*default*        0x0000000000000000 0xffffffffffffffff
+
+链结器命令稿和内存映射
+
+                0xfffffff800000000                reloc1 = 0xfffffff800000000
+                0x0000000002000000                reloc2 = 0x2000000
+                0x00000000c0000000                reloc = 0xc0000000
+                0xfffffff802000000                . = (reloc1 + reloc2)
+
+.text           0xfffffff802000000     0x1d84
+ *(.text)
+ .text          0xfffffff802000000      0x5cb boot2.o
+                0xfffffff802000000                start
+                0xfffffff8020002bd                c_1
+                0xfffffff802000461                hex64
+                0xfffffff80200046c                hex32
+                0xfffffff80200049b                set_cr4_vmxe
+                0xfffffff8020004e6                t_lock
+                0xfffffff802000552                cpu_flag
+                0xfffffff80200055a                m1
+                0xfffffff80200056a                msg1
+ .text          0xfffffff8020005cb      0x160 mp.o
+                0xfffffff8020005cb                find_mptable
+ .text          0xfffffff80200072b      0x165 apic.o
+                0xfffffff80200072b                set_apic
+                0xfffffff802000791                set_ioapic
+                0xfffffff8020007ce                enable_apic
+                0xfffffff8020007eb                start_ap
+                0xfffffff80200082d                send_ipi
+                0xfffffff80200084c                send_ipi1
+                0xfffffff802000883                get_lapic_id
+ .text          0xfffffff802000890      0x371 int.o
+                0xfffffff802000890                intx00
+                0xfffffff802000959                apic_err
+                0xfffffff8020009a5                apic_svr
+                0xfffffff8020009fa                int0x40
+                0xfffffff802000a80                apic_ici
+                0xfffffff802000b0c                sys_call
+                0xfffffff802000b79                cpu0_cur
+                0xfffffff802000b7b                cpu2_cur
+                0xfffffff802000b7d                use_scr
+                0xfffffff802000b7e                cpu_disp
+                0xfffffff802000b82                cpu2_disp
+                0xfffffff802000bae                int_fmt
+                0xfffffff802000bca                hex_64
+                0xfffffff802000bd5                hex_32
+ .text          0xfffffff802000c01      0x1e3 timer.o
+                0xfffffff802000c01                apic_timer
+                0xfffffff802000ccf                timer
+                0xfffffff802000d11                create_user_task_pcb
+                0xfffffff802000dcc                pcb_addr
+ .text          0xfffffff802000de4      0x230 keyb.o
+                0xfffffff802000de4                keyb
+ .text          0xfffffff802001014      0xd70 libs.o
+                0xfffffff802001014                puts
+                0xfffffff802001029                puts.0
+                0xfffffff8020010ad                putc
+                0xfffffff8020010ba                get_cur
+                0xfffffff8020010d9                put_cur
+                0xfffffff8020010f1                test_and_set32
+                0xfffffff8020010fa                test_and_set8
+                0xfffffff802001112                atomic_set
+                0xfffffff80200111b                hexasc
+                0xfffffff802001126                hexasc_32
+                0xfffffff80200113a                hexasc8
+                0xfffffff802001150                print_lock
+                0xfffffff802001158                memcpy
+                0xfffffff802001180                dump_cpu
+                0xfffffff802001265                msg
+                0xfffffff8020012da                vmx_i
+                0xfffffff802001ab4                user_task
+                0xfffffff802001af4                guest_bin
+                0xfffffff802001d84                boot2_end
+
+.data           0xfffffff802001d84        0x0
+ *(.data)
+ .data          0xfffffff802001d84        0x0 boot2.o
+ .data          0xfffffff802001d84        0x0 mp.o
+ .data          0xfffffff802001d84        0x0 apic.o
+ .data          0xfffffff802001d84        0x0 int.o
+ .data          0xfffffff802001d84        0x0 timer.o
+ .data          0xfffffff802001d84        0x0 keyb.o
+ .data          0xfffffff802001d84        0x0 libs.o
+
+.bss            0xfffffff802001d84     0x1f40
+ *(.bss)
+ .bss           0xfffffff802001d84        0x0 boot2.o
+ .bss           0xfffffff802001d84        0x0 mp.o
+ .bss           0xfffffff802001d84        0x0 apic.o
+ .bss           0xfffffff802001d84        0x0 int.o
+ .bss           0xfffffff802001d84        0x0 timer.o
+ .bss           0xfffffff802001d84        0x0 keyb.o
+ .bss           0xfffffff802001d84     0x1f40 libs.o
+                0xfffffff802001d84                cpu0_disp
+                0xfffffff802002d24                cpu1_disp
+LOAD boot2.o
+LOAD mp.o
+LOAD apic.o
+LOAD int.o
+LOAD timer.o
+LOAD keyb.o
+LOAD libs.o
+OUTPUT(boot2.out elf64-x86-64)
