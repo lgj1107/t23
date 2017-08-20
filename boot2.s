@@ -34,6 +34,7 @@ start.1:
 	mov	ecx,temp_data0 - gdt
 	rep	movsb
 
+
 	lea	rsp,[r8+kernel_stk0]
 	lea	rsi,[r8+kernel_gdtr]
 	mov	[r8+0x48+2],r8			#gdt table address
