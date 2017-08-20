@@ -192,7 +192,8 @@ ring3:
 	mov	edi,3
 	syscall
 1:
-	rep nop
+	rep
+	nop
 	jmp	1b
 	.global	c_1
 c_1:
