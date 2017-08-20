@@ -195,9 +195,6 @@ ring3:
 	rep
 	nop
 	jmp	1b
-	.global	c_1
-c_1:
-	.byte	0x0
 set_gate1:
 	mov	[rdi],ax
 	shr	rax,16

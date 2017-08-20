@@ -126,9 +126,9 @@ no_imcrp:
 	stosb
 	loop	1b
 2:
-	mov	eax,[rbx+MPCTH_BASE_TABLE_LENGTH]
-	mov	edi,0xb8000+160*11+64
-	call	hex32
+#	mov	eax,[rbx+MPCTH_BASE_TABLE_LENGTH]
+#	mov	edi,0xb8000+160*11+64
+#	call	hex32
 	mov	eax,1
 	lea	rdi,[rip+msg11]
 	int	0x40

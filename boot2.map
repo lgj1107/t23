@@ -11,106 +11,106 @@ Linker script and memory map
                 0x00000000c0000000                reloc = 0xc0000000
                 0xfffffff802000000                . = (reloc1 + reloc2)
 
-.text           0xfffffff802000000     0x1d98
+.text           0xfffffff802000000     0x1d8c
  *(.text)
  .text          0xfffffff802000000      0x5cb boot2.o
                 0xfffffff802000000                start
-                0xfffffff8020002bd                c_1
-                0xfffffff802000461                hex64
-                0xfffffff80200046c                hex32
-                0xfffffff80200049b                set_cr4_vmxe
-                0xfffffff8020004e6                t_lock
+                0xfffffff802000460                hex64
+                0xfffffff80200046b                hex32
+                0xfffffff80200049a                set_cr4_vmxe
+                0xfffffff8020004e5                t_lock
                 0xfffffff802000552                cpu_flag
                 0xfffffff80200055a                m1
                 0xfffffff80200056a                msg1
  *fill*         0xfffffff8020005cb        0x1 00
- .text          0xfffffff8020005cc      0x160 mp.o
+ .text          0xfffffff8020005cc      0x153 mp.o
                 0xfffffff8020005cc                find_mptable
- .text          0xfffffff80200072c      0x165 apic.o
-                0xfffffff80200072c                set_apic
-                0xfffffff802000792                set_ioapic
-                0xfffffff8020007cf                enable_apic
-                0xfffffff8020007ec                start_ap
-                0xfffffff80200082e                send_ipi
-                0xfffffff80200084d                send_ipi1
-                0xfffffff802000884                get_lapic_id
- *fill*         0xfffffff802000891        0x3 00
- .text          0xfffffff802000894      0x371 int.o
-                0xfffffff802000894                intx00
-                0xfffffff80200095d                apic_err
-                0xfffffff8020009a9                apic_svr
-                0xfffffff8020009fe                int0x40
-                0xfffffff802000a84                apic_ici
-                0xfffffff802000b10                sys_call
-                0xfffffff802000b7d                cpu0_cur
-                0xfffffff802000b7f                cpu2_cur
-                0xfffffff802000b81                use_scr
-                0xfffffff802000b82                cpu_disp
-                0xfffffff802000b86                cpu2_disp
-                0xfffffff802000bb2                int_fmt
-                0xfffffff802000bce                hex_64
-                0xfffffff802000bd9                hex_32
- *fill*         0xfffffff802000c05        0x3 00
- .text          0xfffffff802000c08      0x1e3 timer.o
-                0xfffffff802000c08                apic_timer
-                0xfffffff802000cd6                timer
-                0xfffffff802000d18                create_user_task_pcb
-                0xfffffff802000dd3                pcb_addr
- *fill*         0xfffffff802000deb        0x1 00
- .text          0xfffffff802000dec      0x230 keyb.o
-                0xfffffff802000dec                keyb
- .text          0xfffffff80200101c      0xd7c libs.o
-                0xfffffff80200101c                puts
-                0xfffffff802001031                puts.0
-                0xfffffff8020010b8                putc
-                0xfffffff8020010c5                get_cur
-                0xfffffff8020010e4                put_cur
-                0xfffffff8020010fc                test_and_set32
-                0xfffffff802001109                test_and_set8
-                0xfffffff802001125                atomic_set
-                0xfffffff80200112e                hexasc
-                0xfffffff802001139                hexasc_32
-                0xfffffff80200114d                hexasc8
-                0xfffffff802001163                print_lock
-                0xfffffff80200116b                memcpy
-                0xfffffff802001193                dump_cpu
-                0xfffffff802001278                msg
-                0xfffffff8020012ed                vmx_i
-                0xfffffff802001ac8                user_task
-                0xfffffff802001b08                guest_bin
-                0xfffffff802001d98                boot2_end
+ *fill*         0xfffffff80200071f        0x1 00
+ .text          0xfffffff802000720      0x165 apic.o
+                0xfffffff802000720                set_apic
+                0xfffffff802000786                set_ioapic
+                0xfffffff8020007c3                enable_apic
+                0xfffffff8020007e0                start_ap
+                0xfffffff802000822                send_ipi
+                0xfffffff802000841                send_ipi1
+                0xfffffff802000878                get_lapic_id
+ *fill*         0xfffffff802000885        0x3 00
+ .text          0xfffffff802000888      0x371 int.o
+                0xfffffff802000888                intx00
+                0xfffffff802000951                apic_err
+                0xfffffff80200099d                apic_svr
+                0xfffffff8020009f2                int0x40
+                0xfffffff802000a78                apic_ici
+                0xfffffff802000b04                sys_call
+                0xfffffff802000b71                cpu0_cur
+                0xfffffff802000b73                cpu2_cur
+                0xfffffff802000b75                use_scr
+                0xfffffff802000b76                cpu_disp
+                0xfffffff802000b7a                cpu2_disp
+                0xfffffff802000ba6                int_fmt
+                0xfffffff802000bc2                hex_64
+                0xfffffff802000bcd                hex_32
+ *fill*         0xfffffff802000bf9        0x3 00
+ .text          0xfffffff802000bfc      0x1e3 timer.o
+                0xfffffff802000bfc                apic_timer
+                0xfffffff802000cca                timer
+                0xfffffff802000d0c                create_user_task_pcb
+                0xfffffff802000dc7                pcb_addr
+ *fill*         0xfffffff802000ddf        0x1 00
+ .text          0xfffffff802000de0      0x230 keyb.o
+                0xfffffff802000de0                keyb
+ .text          0xfffffff802001010      0xd7c libs.o
+                0xfffffff802001010                puts
+                0xfffffff802001025                puts.0
+                0xfffffff8020010ac                putc
+                0xfffffff8020010b9                get_cur
+                0xfffffff8020010d8                put_cur
+                0xfffffff8020010f0                test_and_set32
+                0xfffffff8020010fd                test_and_set8
+                0xfffffff802001119                atomic_set
+                0xfffffff802001122                hexasc
+                0xfffffff80200112d                hexasc_32
+                0xfffffff802001141                hexasc8
+                0xfffffff802001157                print_lock
+                0xfffffff80200115f                memcpy
+                0xfffffff802001187                dump_cpu
+                0xfffffff80200126c                msg
+                0xfffffff8020012e1                vmx_i
+                0xfffffff802001abc                user_task
+                0xfffffff802001afc                guest_bin
+                0xfffffff802001d8c                boot2_end
 
-.iplt           0xfffffff802001da0        0x0
+.iplt           0xfffffff802001d90        0x0
  .iplt          0x0000000000000000        0x0 boot2.o
 
-.rela.dyn       0xfffffff802001d98        0x0
+.rela.dyn       0xfffffff802001d90        0x0
  .rela.iplt     0x0000000000000000        0x0 boot2.o
  .rela.text     0x0000000000000000        0x0 boot2.o
 
-.data           0xfffffff802001d98        0x0
+.data           0xfffffff802001d8c        0x0
  *(.data)
- .data          0xfffffff802001d98        0x0 boot2.o
- .data          0xfffffff802001d98        0x0 mp.o
- .data          0xfffffff802001d98        0x0 apic.o
- .data          0xfffffff802001d98        0x0 int.o
- .data          0xfffffff802001d98        0x0 timer.o
- .data          0xfffffff802001d98        0x0 keyb.o
- .data          0xfffffff802001d98        0x0 libs.o
+ .data          0xfffffff802001d8c        0x0 boot2.o
+ .data          0xfffffff802001d8c        0x0 mp.o
+ .data          0xfffffff802001d8c        0x0 apic.o
+ .data          0xfffffff802001d8c        0x0 int.o
+ .data          0xfffffff802001d8c        0x0 timer.o
+ .data          0xfffffff802001d8c        0x0 keyb.o
+ .data          0xfffffff802001d8c        0x0 libs.o
 
-.igot.plt       0xfffffff802001d98        0x0
+.igot.plt       0xfffffff802001d90        0x0
  .igot.plt      0x0000000000000000        0x0 boot2.o
 
-.bss            0xfffffff802001d98     0x1f40
+.bss            0xfffffff802001d8c     0x1f40
  *(.bss)
- .bss           0xfffffff802001d98        0x0 boot2.o
- .bss           0xfffffff802001d98        0x0 mp.o
- .bss           0xfffffff802001d98        0x0 apic.o
- .bss           0xfffffff802001d98        0x0 int.o
- .bss           0xfffffff802001d98        0x0 timer.o
- .bss           0xfffffff802001d98        0x0 keyb.o
- .bss           0xfffffff802001d98     0x1f40 libs.o
-                0xfffffff802001d98                cpu0_disp
-                0xfffffff802002d38                cpu1_disp
+ .bss           0xfffffff802001d8c        0x0 boot2.o
+ .bss           0xfffffff802001d8c        0x0 mp.o
+ .bss           0xfffffff802001d8c        0x0 apic.o
+ .bss           0xfffffff802001d8c        0x0 int.o
+ .bss           0xfffffff802001d8c        0x0 timer.o
+ .bss           0xfffffff802001d8c        0x0 keyb.o
+ .bss           0xfffffff802001d8c     0x1f40 libs.o
+                0xfffffff802001d8c                cpu0_disp
+                0xfffffff802002d2c                cpu1_disp
 LOAD boot2.o
 LOAD mp.o
 LOAD apic.o

@@ -1,8 +1,8 @@
 	.text
-	.include "../include/apicreg.def"
-	.include "../include/regs.def"
-	.include "../include/misc.def"
-	.include "../include/mem.inc"
+	.include "apicreg.def"
+	.include "regs.def"
+	.include "misc.def"
+	.include "mem.inc"
 	.code64
 	.intel_syntax noprefix
 	.global	apic_timer,timer
